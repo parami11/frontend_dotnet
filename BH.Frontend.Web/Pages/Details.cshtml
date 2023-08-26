@@ -25,7 +25,36 @@ else
     {
         @foreach (var account in this.Model.CustomerDetails.Accounts)
         {
+            <div class="row">
+                <div class="col-6"><b>Account:</b> @account.Account.AccountNumber</div>
+            </div>
+            <div class="row">
+                <div class="col-6"><b>Balance:</b> @account.Account.CurrentBalance</div>
+            </div>
 
+            @if (account.Transactions == null || account.Transactions.Count == 0)
+            {
+                <label class="alert-warning">This account has no transactions</label>
+
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col-6">
+                        <br />
+                        <b>Transactions</b>
+                    </div>
+                </div>
+                @foreach (var transaction in account.Transactions)
+                {
+                    <div class="row">
+                        <div class="col-6">
+                            @transaction.TransactionType.ToString() - @transaction.Amount
+                        </div>
+                    </div>
+                }
+
+            }
         }
     }
 }
