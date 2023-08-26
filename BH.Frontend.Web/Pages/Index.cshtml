@@ -1,0 +1,30 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "BH Frontend";
+}
+
+<div class="text-center">
+    @if (Model.Customers != null)
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in Model.Customers)
+                {
+                    <tr>
+                        <td>@customer.FirstName</td>
+                        <td>@customer.LastName</td>
+                        <td><a href="/Details?id=@customer.ID">Details</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

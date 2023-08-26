@@ -1,0 +1,31 @@
+﻿@page
+@model BH.Frontend.Web.Pages.DetailsModel
+@{
+}
+@if (this.Model.CustomerDetails == null)
+{
+    <label class="alert-danger">Invalid Url</label>
+}
+else
+{
+    <div class="row">
+        <div class="col-3"><b>First Name</b></div>
+        <div class="col-3">@this.Model.CustomerDetails.Customer.FirstName</div>
+        <div class="col-3"><b>Last Name</b></div>
+        <div class="col-3">@this.Model.CustomerDetails.Customer.LastName</div>
+    </div>
+    <br />
+    <a class="btn-dark" href="CreateAccount?id=@this.Model.CustomerDetails.Customer.ID">Create Account</a>
+    <br />
+    @if (this.Model.CustomerDetails.Accounts == null || this.Model.CustomerDetails.Accounts.Count == 0)
+    {
+        <label class="alert-warning">This user has no accounts</label>
+    }
+    else
+    {
+        @foreach (var account in this.Model.CustomerDetails.Accounts)
+        {
+
+        }
+    }
+}
